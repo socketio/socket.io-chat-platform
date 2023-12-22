@@ -1,0 +1,11 @@
+@import "./bootstrap.css";
+@import "./base.css";
+
+#app {
+  height: 100%;
+  display: flex;
+}
+
+.mw-80 {
+  max-width: 80%;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "socket.io-chat-platform",
+  "version": "°0.0.1",
+  "description": "Chat platform based on Socket.IO",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "node entrypoint.js",
+    "dev": "node index.js",
+    "test": "mocha --recursive",
+    "format": "prettier -w index.js src/ test/"
+  },
+  "dependencies": {
+    "@socket.io/postgres-adapter": "^0.3.1",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "argon2": "^0.31.1",
+    "body-parser": "^1.20.2",
+    "connect-pg-simple": "^9.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "passport": "^0.6.0",
+    "passport-json": "^1.2.0",
+    "pg": "^8.11.3",
+    "postgres-migrations": "^5.3.0",
+    "socket.io": "^4.7.2",
+    "sql-bricks-postgres": "^0.6.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "prettier": "^3.0.3",
+    "socket.io-client": "^4.7.2"
+  }
+}

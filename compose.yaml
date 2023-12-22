@@ -1,0 +1,42 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend01
+      - backend02
+      - backend03
+
+  backend01:
+    build:
+      context: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+
+  backend02:
+    build:
+      context: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+
+  backend03:
+    build:
+      context: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: "changeit"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
