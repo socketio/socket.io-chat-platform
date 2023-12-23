@@ -1,6 +1,14 @@
 # Socket.IO chat platform
 
-A basic chat platform based on [Socket.IO](https://socket.io/).
+A basic chat platform based on [Socket.IO](https://socket.io/) with:
+
+- channel-based messages:
+
+![Screenshot of a public channel](./assets/channel_based_messages.png)
+
+- and private messages:
+
+![Screenshot of a private channel](./assets/private_messages.png)
 
 Table of contents:
 
