@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node entrypoint.js",
     "dev": "node index.js",
-    "test": "mocha --recursive",
+    "test": "mocha --exit --recursive",
     "format": "prettier -w index.js src/ test/"
   },
   "dependencies": {

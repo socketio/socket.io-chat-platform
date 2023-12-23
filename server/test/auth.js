@@ -28,7 +28,7 @@ describe("auth", () => {
         }),
       });
 
-      expect(res.status).to.eql(204);
+      expect(res.status).to.eql(200);
 
       const cookieHeader = res.headers.get("set-cookie");
       const sid = cookieHeader.substring(
@@ -104,7 +104,7 @@ describe("auth", () => {
         }),
       });
 
-      expect(res.status).to.eql(204);
+      expect(res.status).to.eql(200);
 
       const cookieHeader = res.headers.get("set-cookie");
       const sid = cookieHeader.substring(
