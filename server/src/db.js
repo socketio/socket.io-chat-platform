@@ -180,6 +180,7 @@ export class DB {
       FROM users
       WHERE
         username ILIKE $2 ESCAPE '~'
+        AND id <> $1
         AND id NOT IN (
           SELECT
             DISTINCT user_id
