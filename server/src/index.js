@@ -18,7 +18,13 @@ import { getUser } from "./user/get.js";
 import { initAuth } from "./auth/index.js";
 import { reachUser } from "./user/reach.js";
 import { searchUsers } from "./user/search.js";
-import { channelRoom, userRoom, userStateRoom, logger } from "./util.js";
+import {
+  channelRoom,
+  userRoom,
+  userStateRoom,
+  logger,
+  sessionRoom,
+} from "./util.js";
 
 const CLEANUP_ZOMBIE_USERS_INTERVAL_IN_MS = 60_000;
 
@@ -88,6 +94,7 @@ function initEventHandlers({ io, db, config }) {
     });
 
     socket.join(userRoom(socket.userId));
+    socket.join(sessionRoom(socket.request.session.id));
 
     next();
   });

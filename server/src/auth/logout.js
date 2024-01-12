@@ -1,7 +1,8 @@
-import { logger, userRoom } from "../util.js";
+import { logger, sessionRoom } from "../util.js";
 
 export function logout({ app, io }) {
   app.post("/logout", (req, res, next) => {
+    const sessionId = req.session.id;
     const userId = req.user.id;
 
     req.logout((err) => {
@@ -9,9 +10,13 @@ export function logout({ app, io }) {
         return next(err);
       }
 
-      logger.info("user [%s] has logged out", userId);
+      logger.info(
+        "user [%s] has logged out from session [%s]",
+        userId,
+        sessionId,
+      );
 
-      io.in(userRoom(userId)).disconnectSockets();
+      io.in(sessionRoom(sessionId)).disconnectSockets();
 
       res.status(204).end();
     });

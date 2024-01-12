@@ -42,6 +42,10 @@ export function userRoom(userId) {
   return `user:${userId}`;
 }
 
+export function sessionRoom(sessionId) {
+  return `session:${sessionId}`;
+}
+
 export function userStateRoom(userId) {
   return `user_state:${userId}`;
 }
