@@ -92,7 +92,7 @@ const someoneIsTyping = computed(() => {
           outlined
           :loading="isLoading"
           @click="loadMore"
-          icon="plus"
+          icon="arrow-up"
         >
           Load more
         </v-btn>
