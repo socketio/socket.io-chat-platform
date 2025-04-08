@@ -1,11 +1,13 @@
 <script setup>
 import { computed, nextTick, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useMainStore } from "@/stores/main";
 import { debounce } from "@/util";
 import { socket } from "@/BackendService";
 import VBtn from "@/components/common/VBtn.vue";
 import VModal from "@/components/common/VModal.vue";
 
+const router = useRouter();
 const store = useMainStore();
 
 const channelName = ref("");
@@ -70,6 +72,7 @@ async function joinChannel(channel) {
 }
 
 function onSuccess(channel) {
+  router.push({ name: "channel", params: { channelId: channel.id } });
   store.addChannel(channel);
   store.selectChannel(channel.id);
   store.showJoinOrCreateChannelModel = false;
