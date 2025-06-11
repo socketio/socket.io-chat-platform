@@ -1,4 +1,4 @@
-import { ajv, logger, userRoom } from "../util.js";
+import { ajv, logger, userRoom, channelRoom } from "../util.js";
 
 const validate = ajv.compile({
   type: "object",
@@ -37,7 +37,7 @@ export function joinChannel({ io, socket, db }) {
     // broadcast to the other tabs of the same user
     socket.to(userRoom(socket.userId)).emit("channel:joined", channel);
 
-    io.in(userRoom(socket.userId)).socketsJoin(`channel:${channel.id}`);
+    io.in(userRoom(socket.userId)).socketsJoin(channelRoom(channel.id));
 
     callback({
       status: "OK",

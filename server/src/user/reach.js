@@ -1,4 +1,4 @@
-import { ajv, logger, userRoom } from "../util.js";
+import { ajv, logger, userRoom, channelRoom } from "../util.js";
 
 const validate = ajv.compile({
   type: "object",
@@ -46,7 +46,7 @@ export function reachUser({ io, socket, db }) {
     // broadcast to other tabs of the same user
     socket.to(userRoom(socket.userId)).emit("channel:created", channel);
 
-    io.in(userRoom(socket.userId)).socketsJoin(`channel:${channel.id}`);
+    io.in(userRoom(socket.userId)).socketsJoin(channelRoom(channel.id));
 
     callback({
       status: "OK",
